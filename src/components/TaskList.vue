@@ -6,6 +6,7 @@ const props = defineProps<{ tasks: Task[] }>();
 const emits = defineEmits<{
   toggleDone: [id: string];
   removeTask: [id: string];
+
 }>();
 </script>
 <template>
@@ -29,6 +30,7 @@ const emits = defineEmits<{
 <style scoped>
 .task-list {
   margin-top: 2rem;
+  
 }
 
 .task {
@@ -45,11 +47,20 @@ const emits = defineEmits<{
 
 .list-enter-active,
 .list-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
-.list-enter-from,
+
+.list-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
 .list-leave-to {
   opacity: 0;
-  transform: translateY(-100px);
+  transform: translateX(30px);
+}
+
+.list-move {
+  transition: transform 0.9s ease;
 }
 </style>
